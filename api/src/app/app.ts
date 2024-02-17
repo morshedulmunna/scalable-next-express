@@ -1,12 +1,14 @@
 import express, { Application } from "express";
 import { errorHandler, notFoundHandler } from "./GlobalError";
+import router from "./GlobalRoute";
+import GlobalMiddleware from "./GlobalMiddleware";
 
 const app: Application = express();
 // middleWare
-app.use(require("./GlobalMiddleware.ts"));
+app.use(GlobalMiddleware);
 
 // Router Link
-app.use(require("./GlobalRoute.ts"));
+app.use(router);
 
 //Default Global error MiddleWare
 app.use(notFoundHandler);
